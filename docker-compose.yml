@@ -1,0 +1,7 @@
+php-files:
+  dockerfile: Dockerfile
+  build: ./
+  ports:
+    - 90:80
+  volumes:
+    - ../:/var/www/html/
