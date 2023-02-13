@@ -24,10 +24,6 @@
             // Check file is exists on given path.
             if(file_exists($download_file))
             {
-<<<<<<< HEAD
-                header('Content-Disposition: attachment; filename=' . $filename);  
-                readfile($download_file); 
-=======
                 header('Content-Description: File Transfer');
                 header('Content-Type: application/octet-stream');
                 header('Content-Disposition: attachment; filename=' .basename($filename));  
@@ -37,7 +33,6 @@
                 header('Content-Length: ' . filesize($download_file));
                 readfile($download_file);
                 flush();
->>>>>>> 5a26e6c (change)
                 exit;
             }
             else
@@ -97,9 +92,6 @@
             e();
         }
 function e(){
-<<<<<<< HEAD
-    header('Content-Disposition: attachment; filename="archive.zip"');  
-=======
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment; filename="archive.zip"');  
@@ -107,7 +99,6 @@ function e(){
     header('Cache-Control: must-revalidate');
     header('Pragma: public');
     header('Content-Length: ' . filesize("./.temp/temp.zip"));
->>>>>>> 5a26e6c (change)
     readfile("./.temp/temp.zip"); 
     unlink("./.temp/temp.zip");
 }
