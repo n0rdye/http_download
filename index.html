@@ -17,20 +17,46 @@
         }
 
         .input {
-            border: 1px solid black;
+            border-top: 1px solid black;
             display: flex;
-            justify-content: space-around;
             padding: 5px;
+            justify-content: space-around;
+        }
+
+        .i-1 {
+            margin-right: 5px;
+            border-left: 3px solid black;
+        }
+
+        .i-2 {
+            border-inline: 3px solid black;
+            padding-inline: 5px;
+        }
+
+        .i-3 {
+            margin-left: 5px;
+            border-right: 3px solid black;
         }
 
         ul {
             list-style-type: none;
             padding: 0px;
+            list-style-position: inside;
             margin: 0px;
+            display: block ruby;
+        }
+
+        li {
+            float: left !important;
+            margin: 10px;
+            margin-inline: 10px;
+            border: 1px solid black;
+            padding: 5px;
+
         }
 
         .title {
-            border: 1px solid black;
+            border-bottom: 1px solid black;
             display: flex;
             justify-content: space-around;
             padding: 5px;
@@ -39,15 +65,18 @@
         a {
             text-decoration: none;
             color: black;
-            border-right: 1px solid black;
+            /* border-right: 1px solid black; */
         }
 
         button {
-            border-left: 1px solid black;
+            /* border-left: 1px solid black; */
             border: 0px;
             background-color: white;
             color: black;
             cursor: pointer;
+            margin: 0px;
+            padding: 0px;
+            font-size: 16px;
         }
     </style>
 </head>
