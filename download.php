@@ -14,10 +14,12 @@
     //     // read the file from disk
     //     readfile($file);
     // }
-    $filename = basename($_GET['file']);
+    $filename = $_GET['file'];
     // Specify file path.
-    $path = '../'; // '/uplods/'
-    $download_file =  $path.$filename;
+
+    // $path = '../'; // '/uplods/'
+    // $download_file =  $path.$filename; 
+    $download_file = $filename;
 
     if (pathinfo(($download_file), PATHINFO_EXTENSION)){
         if(!empty($filename)){
@@ -52,25 +54,30 @@
             //     // All files are added, so close the zip file.
             //     $zip->close();
             // }
+
+            $file_temp = explode ("/",$filename);
+            $name = $file_temp[count($file_temp)-1];
+            $filename = str_replace("//", "/", $filename); 
             ob_start();
             $zip = new ZipArchive;
-            if ($zip->open('.temp/temp.zip', ZipArchive::CREATE) === TRUE)
-            {
-                function r($zip,$filename){
-                    if ($handle = opendir("../".$filename))
-                    {
-                        // Add all files inside the directory
-                        while (false !== ($entry = readdir($handle)))
-                        {
-                            if ($entry != "." && $entry != ".." && !is_dir("../".$filename."/" . $entry))
-                            {
-                                // print("../".$filename."/" . $entry."\n");
-                                $zip->addFile("../".$filename."/" . $entry ,$filename."/".$entry);
+            if ($zip->open('./temp/temp.zip', ZipArchive::CREATE) === TRUE){
+                function r($zip,$filename,$name){
+                    if ($handle = opendir($filename)){
+                        while (false !== ($entry = readdir($handle))){
+                            if ($entry != "." && $entry != ".." && !is_dir($filename."/" . $entry)){
+                                $zip->addFile($filename."/" . $entry ,$name."/".$entry);
+                                // echo $name."/_".$entry;
+                                // echo "<br>";
+                               
                             }
-                            else if ($entry != "." && $entry != ".." && is_dir("../".$filename."/" . $entry))
-                            {
+                            else if ($entry != "." && $entry != ".." && is_dir($filename."/" . $entry)){
                                 // $zip->addEmptyDir($entry);
-                                r($zip,$filename."/".$entry);
+                                $arc = $filename."/".$entry;
+                                $arc = str_replace("//", "/", $arc); 
+                                r($zip,$arc,$name."/".$entry);
+                                // echo $arc;
+                                // echo $name."/".$entry;
+                                // echo "<br>";
                                 // r($filename."/".$entry);
                                 // $zip->addFile("../".$filename."/" . $entry,$entry);
                             //     $zip->addEmptyDir($entry);
@@ -80,7 +87,7 @@
                         closedir($handle);
                     }
                 }
-                r($zip,$filename);
+                r($zip,$filename,$name);
                 
                 $zip->close();
             }
@@ -98,8 +105,8 @@ function e(){
     header('Expires: 0');
     header('Cache-Control: must-revalidate');
     header('Pragma: public');
-    header('Content-Length: ' . filesize("./.temp/temp.zip"));
-    readfile("./.temp/temp.zip"); 
-    unlink("./.temp/temp.zip");
+    header('Content-Length: ' . filesize("./temp/temp.zip"));
+    readfile("./temp/temp.zip"); 
+    unlink("./temp/temp.zip");
 }
 ?>
