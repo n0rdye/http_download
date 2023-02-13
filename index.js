@@ -28,8 +28,8 @@ function read(dirr) {
             document.getElementById("back").innerHTML = `<button onclick="read('${dirrr}/');" >back</button>`;
             arr.forEach(element => {
                 // console.log(element);
-                console.log(element.split("."));
-                if (element != "index.html" && element.split(".")[0] != "") {
+                // console.log(element.split(".")[0] != "", element != "index.html");
+                if (element.split(".")[0] != "" && element != "index.html") {
                     // document.getElementById("list").innerHTML += `<li>`+`<a href='.conf/download.php?file=${element}'>`+element+"</a>"+"</li>"; 
                     document.getElementById("list").innerHTML += `<li>` +
 
