@@ -11,6 +11,7 @@ function read(dirr) {
         success: function(result) {
 
             let dirarr = dirr.split("/");
+            let darr = dirr.split("/");
             dirarr.splice(dirarr.length - 2, 2);
             let dirrr = dirarr.join("/");
 
@@ -21,7 +22,18 @@ function read(dirr) {
 
             document.getElementById("list").innerHTML = "";
 
-            document.getElementById("dir").innerHTML = dirr;
+            let dir_str = "";
+            let dir_lvl = "";
+            darr.forEach(element => {
+                if (element != "") {
+                    dir_lvl += element + "/";
+                    dir_str += `<button onclick="read('${dir_lvl}');">${element}/</button>`;
+                    console.log(element);
+                }
+            });
+            console.log(dir_str);
+            console.log(dirarr);
+            document.getElementById("dir").innerHTML = dir_str;
             document.getElementById("back").innerHTML = `<button onclick="read('${dirrr}/');" >back</button>`;
             arr.forEach(element => {
                 // console.log(element);
@@ -70,8 +82,6 @@ function read(dirr) {
         }
     })
 }
-
-
 
 function copy(text) {
     function copyToClipboard(text) {
