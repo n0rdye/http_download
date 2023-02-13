@@ -29,7 +29,7 @@ function read(dirr) {
             arr.forEach(element => {
                 // console.log(element);
                 console.log(element.split("."));
-                if (element != "" && element != "." && element != ".." && element != "index.html" && element.split(".")[0] != "") {
+                if (element != "index.html" && element.split(".")[0] != "") {
                     // document.getElementById("list").innerHTML += `<li>`+`<a href='.conf/download.php?file=${element}'>`+element+"</a>"+"</li>"; 
                     document.getElementById("list").innerHTML += `<li>` +
 
