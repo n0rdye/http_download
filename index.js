@@ -44,10 +44,10 @@ function read(dirr) {
                     success: function(result_path) {
                         if (element.split(".")[0] != "" && element != "index.html") {
                             // document.getElementById("list").innerHTML += `<li>`+`<a href='.conf/download.php?file=${element}'>`+element+"</a>"+"</li>"; 
-                            let f = (result_path == `${dirr}/${element}`) ? `<button onclick="read('${dirr}${element}/');">go to></button>` : "";
+                            let f = (result_path == `${dirr}/${element}`) ? `<button onclick="read('${dirr}${element}/');">go_to></button>` : "";
                             let type = (f != "") ? "folder" : "file";
                             // console.log(result_path);
-                            let download_link = `${dirr}/${element}`;
+                            let download_link = `${dirr}${element}`;
                             document.getElementById("list").innerHTML += `<li>` +
 
                                 "<div class='title'>" +
