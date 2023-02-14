@@ -10,6 +10,8 @@ function read(dirr) {
         url: "./read.php?p=" + dirr,
         success: function(result) {
 
+            // console.log(result);
+            // return;
             let dirarr = dirr.split("/");
             let darr = dirr.split("/");
             dirarr.splice(dirarr.length - 2, 2);
@@ -35,7 +37,9 @@ function read(dirr) {
             // console.log(dirarr);
             document.getElementById("dir").innerHTML = dir_str;
             document.getElementById("back").innerHTML = `<button onclick="read('${dirrr}/');" >back</button>`;
+            dirr = dirr.replace(/%!%/g, " ");
             arr.forEach(element => {
+                element = element.replace(/%!%/g, " ");
                 // console.log(element);
                 // console.log(element.split(".")[0] != "", element != "index.html");
                 $.ajax({
@@ -48,6 +52,9 @@ function read(dirr) {
                             let type = (f != "") ? "folder" : "file";
                             // console.log(result_path);
                             let download_link = `${dirr}${element}`;
+                            download_link = download_link.replace(/ /g, "%!%");
+                            // download_link = download_link.replace(" ", "%^%");
+                            console.log(download_link);
                             document.getElementById("list").innerHTML += `<li>` +
 
                                 "<div class='title'>" +
@@ -61,13 +68,13 @@ function read(dirr) {
                                 "<div class='input'>" +
 
                                 "<div class='i-1'>" +
-                                `<a href="https://files.clickey.site/.conf/download.php?file=${download_link}">mirr_1<</a>` +
-                                `<button onclick="copy('https://files.clickey.site/.conf/download.php?file=${download_link}')">copy</button>` +
+                                `<a href="http://main.clickey.site:190/.conf/download.php?file=${download_link}">mirr_1<</a>` +
+                                `<button onclick="copy('http://main.clickey.site:190/.conf/download.php?file=${download_link}')">copy</button>` +
                                 "</div>" +
 
                                 "<div class='i-2'>" +
-                                `<a href="http://main.clickey.site:190/.conf/download.php?file=${download_link}">mirr_1<</a>` +
-                                `<button onclick="copy('http://main.clickey.site:190/.conf/download.php?file=${download_link}')">copy</button>` +
+                                `<a href="https://files.clickey.site/.conf/download.php?file=${download_link}">mirr_2<</a>` +
+                                `<button onclick="copy('https://files.clickey.site/.conf/download.php?file=${download_link}')">copy</button>` +
                                 "</div>" +
 
                                 "<div class='i-3'>" +
