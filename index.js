@@ -37,10 +37,12 @@ function read(dirr) {
             // console.log(dirarr);
             document.getElementById("dir").innerHTML = dir_str;
             document.getElementById("back").innerHTML = `<button onclick="read('${dirrr}/');" >back</button>`;
-            dirr = dirr.replace(/%!%/g, " ");
+            dirr = dirr.replace(/~/g, " ");
+            // console.log(dirr);
+
             arr.forEach(element => {
-                element = element.replace(/%!%/g, " ");
-                // console.log(element);
+                element = element.replace(/~/g, " ");
+                console.log(element);
                 // console.log(element.split(".")[0] != "", element != "index.html");
                 $.ajax({
                     type: "GET",
@@ -52,9 +54,9 @@ function read(dirr) {
                             let type = (f != "") ? "folder" : "file";
                             // console.log(result_path);
                             let download_link = `${dirr}${element}`;
-                            download_link = download_link.replace(/ /g, "%!%");
+                            download_link = download_link.replace(/ /g, "~");
                             // download_link = download_link.replace(" ", "%^%");
-                            console.log(download_link);
+                            // console.log(download_link);
                             document.getElementById("list").innerHTML += `<li>` +
 
                                 "<div class='title'>" +

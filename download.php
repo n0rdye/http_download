@@ -19,7 +19,7 @@
 
     // $path = '../'; // '/uplods/'
     // $download_file =  $path.$filename; 
-    $filename = str_replace("%!%", " ", $filename); 
+    $filename = str_replace("~", " ", $filename); 
     $download_file = $filename;
 
     if (pathinfo(($download_file), PATHINFO_EXTENSION)){

@@ -4,7 +4,7 @@
     $dir = opendir($path);
     while($file = readdir($dir))
     {
-        $file = str_replace(" ", "%!%", $file); 
+        $file = str_replace(" ", "~", $file); 
         echo $file,"|";
     }
     closedir($dir);
