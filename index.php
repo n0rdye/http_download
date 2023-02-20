@@ -87,6 +87,10 @@
     </section>
     <br>
     <ul id="list"></ul>
+    <br>
+    <div>
+        <?php include("./file_upload.php"); ?>
+    </div>
 </body>
 
 </html>

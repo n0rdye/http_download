@@ -2,7 +2,7 @@ $(function() {
     read(dir);
 });
 
-let dir = "../";
+let dir = (localStorage.getItem("files/dir?/")!=null)? localStorage.getItem("files/dir?/"):"../";
 
 function read(dirr) {
     $.ajax({
@@ -36,13 +36,15 @@ function read(dirr) {
             // console.log(dir_str);
             // console.log(dirarr);
             document.getElementById("dir").innerHTML = dir_str;
+            document.getElementById("dirr").innerText = `${dir_lvl}`;
+            localStorage.setItem("files/dir?/",dir_lvl);
             document.getElementById("back").innerHTML = `<button onclick="read('${dirrr}/');" >back</button>`;
             dirr = dirr.replace(/~/g, " ");
             // console.log(dirr);
-
+            
             arr.forEach(element => {
                 element = element.replace(/~/g, " ");
-                console.log(element);
+                // console.log(element);
                 // console.log(element.split(".")[0] != "", element != "index.html");
                 $.ajax({
                     type: "GET",
