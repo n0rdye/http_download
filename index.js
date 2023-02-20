@@ -87,6 +87,7 @@ function read(dirr) {
                                 "</div>" +
 
                                 "</div>" +
+                                `<div><a href="./file_del.php?ftd=${download_link}">del</a></div>`
                                 "</li>";
 
                         }
