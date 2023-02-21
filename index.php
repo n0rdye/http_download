@@ -81,6 +81,7 @@
 </head>
 
 <body>
+    <button onclick="home()" style="height:10px;width:10px;"></button>
     <section>
         <div id="back"></div>
         <div id="dir"></div>

@@ -4,6 +4,10 @@ $(function() {
 
 let dir = (localStorage.getItem("files/dir?/")!=null)? localStorage.getItem("files/dir?/"):"../";
 
+function home(){
+    localStorage.setItem("files/dir?/","../");
+    window.location = "./";
+}
 function read(dirr) {
     $.ajax({
         type: "GET",
